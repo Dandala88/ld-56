@@ -6,6 +6,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health;
+    public float experience;
+    public int collisionDamage;
 
     protected bool dying;
     protected Rigidbody rb;

@@ -11,11 +11,13 @@ public class Laser : MonoBehaviour
     private float lifeElapsed;
 
     private Rigidbody rb;
+    private Bear bear;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
+        bear = FindObjectOfType<Bear>();
     }
 
     private void Update()
@@ -32,6 +34,7 @@ public class Laser : MonoBehaviour
         var enemy = other.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
+            bear.GainExperience(enemy.experience);
             enemy.Hurt(power);
             Destroy(gameObject);
         }

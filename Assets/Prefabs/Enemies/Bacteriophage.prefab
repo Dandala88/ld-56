@@ -131,8 +131,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4187245515971498897}
   - {fileID: 2813593404583834487}
+  - {fileID: 4187245515971498897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &538168299454522840
@@ -175,6 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  experience: 1
+  collisionDamage: 1
   moveInterval: 2
   moveForce: 15
 --- !u!199 &982316025946151685

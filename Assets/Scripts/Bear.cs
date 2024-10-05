@@ -5,18 +5,26 @@ using UnityEngine.InputSystem;
 
 public class Bear : MonoBehaviour
 {
+    public int maxHealth;
     public float moveSpeed;
     public float deceleration;
     public float pitchSpeed;
     public float yawSpeed;
     public float rollSpeed;
+    public float hurtKnockback = 500;
+    public float hurtITime = 1f;
     public Laser laserPrefab;
     public Transform laserOrigin;
     public PauseUI pauseUI;
+    public HUD hud;
 
     private Vector2 input;
     private Vector2 pitchYaw;
     private float diveSurface;
+    private int level;
+    private float experience;
+    private int currentHealth;
+    private bool hurtInvincible;
 
     private Rigidbody rb;
     private BearRoot bearRoot;
@@ -27,6 +35,7 @@ public class Bear : MonoBehaviour
         bearRoot = GetComponentInChildren<BearRoot>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        currentHealth = maxHealth;
     }
 
     private void FixedUpdate()
@@ -58,6 +67,21 @@ public class Bear : MonoBehaviour
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
+    }
+
+    public void GainExperience(float experience)
+    {
+        this.experience += experience;
+    }
+
+    public void Hurt(int amount)
+    {
+        if (!hurtInvincible)
+        {
+            currentHealth -= amount;
+            hud.UpdateHealthBar(currentHealth, maxHealth);
+            StartCoroutine(HurtInvincibleCoroutine());
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -96,5 +120,22 @@ public class Bear : MonoBehaviour
             else
                 pauseUI.gameObject.SetActive(true);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var enemy = collision.gameObject.GetComponentInParent<Enemy>();
+        if(enemy != null && !hurtInvincible)
+        {
+            rb.AddForce(collision.contacts[0].normal * hurtKnockback);
+            Hurt(enemy.collisionDamage);
+        }
+    }
+
+    private IEnumerator HurtInvincibleCoroutine()
+    {
+        hurtInvincible = true;
+        yield return new WaitForSeconds(hurtITime);
+        hurtInvincible = false;
     }
 }
