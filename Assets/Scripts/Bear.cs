@@ -9,32 +9,32 @@ public class Bear : MonoBehaviour
     public float deceleration;
     public float pitchSpeed;
     public float yawSpeed;
-    public Camera cam;
+    public float rollSpeed;
     public Laser laserPrefab;
     public Transform laserOrigin;
     private float pitchYawMoveThreshold = 0.25f;
 
     private Vector2 input;
     private Vector2 pitchYaw;
+    private float roll;
 
     private Rigidbody rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        cam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void FixedUpdate()
     {
-
-        rb.AddTorque(Vector3.right * -pitchYaw.y * pitchSpeed * Time.fixedDeltaTime);
-
-        rb.AddTorque(Vector3.up * pitchYaw.x * yawSpeed * Time.fixedDeltaTime);
-
-
+        var finalRotation = Vector3.zero;
+ 
+        finalRotation.x = -pitchYaw.y * pitchSpeed * Time.fixedDeltaTime;
+        finalRotation.y = pitchYaw.x * yawSpeed * Time.fixedDeltaTime;
+        finalRotation.z = roll * rollSpeed * Time.fixedDeltaTime;
+        transform.Rotate(finalRotation);
 
         if (Mathf.Abs(input.y) > 0.1f)
         {
@@ -70,5 +70,11 @@ public class Bear : MonoBehaviour
         pitchYaw = context.ReadValue<Vector2>();
         pitchYaw.x = Mathf.Clamp(pitchYaw.x, -1f, 1f);
         pitchYaw.y = Mathf.Clamp(pitchYaw.y, -1f, 1f);
+    }
+
+    public void Roll(InputAction.CallbackContext context)
+    {
+        roll = context.ReadValue<float>();
+        Debug.Log(roll);
     }
 }
