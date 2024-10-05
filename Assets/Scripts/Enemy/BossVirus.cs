@@ -5,18 +5,23 @@ using UnityEngine;
 public class BossVirus : Enemy
 {
     public float shootInterval = 1f;
+    public float radius = 30f;
     public float deceleration;
     public float rotationSpeed;
     public EnemyLaser laserPrefab;
+    public Turret turretPrefab;
 
-    private float moveElapsed;
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
-    private Vector3 newRotation;
 
     protected void Awake()
     {
         base.Awake();
+    }
+
+    private void Start()
+    {
+        GenerateTurrets();
         var turretChildren = GetComponentsInChildren<Turret>();
         foreach (var turretChild in turretChildren)
             turrets.Add(turretChild);
@@ -35,7 +40,7 @@ public class BossVirus : Enemy
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
-        transform.Rotate(0f, rotationSpeed * Time.fixedDeltaTime, 0f);
+        transform.Rotate(rotationSpeed * Time.fixedDeltaTime, rotationSpeed * Time.fixedDeltaTime, rotationSpeed * Time.fixedDeltaTime);
     }
 
     private void Shoot()
@@ -45,6 +50,34 @@ public class BossVirus : Enemy
             var clone = Instantiate(laserPrefab);
             clone.transform.position = turret.transform.position;
             clone.transform.forward = turret.transform.forward;
+        }
+    }
+
+    private void GenerateTurrets()
+    {
+        var segments = 11;
+        var horizontalSegments = 14;
+        for (int i = 0; i <= segments; i++)
+        {
+            float phi = Mathf.PI * (i + 0.5f) / segments;
+
+            for (int j = 0; j < horizontalSegments; j++)
+            {
+                float theta = 2 * Mathf.PI * j / horizontalSegments;
+
+                float x = radius * Mathf.Sin(phi) * Mathf.Cos(theta);
+                float y = radius * Mathf.Cos(phi);
+                float z = radius * Mathf.Sin(phi) * Mathf.Sin(theta);
+
+                var turret = Instantiate(turretPrefab);
+                turret.transform.parent = transform;
+                turret.transform.localPosition = new Vector3(x, y, z);
+
+                Vector3 directionFromCenter = turret.transform.localPosition.normalized;
+                turret.transform.forward = directionFromCenter;
+
+                Debug.DrawRay(turret.transform.position, transform.forward, Color.yellow, 60);
+            }
         }
     }
 }

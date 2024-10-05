@@ -7,6 +7,7 @@ public class Bear : MonoBehaviour
 {
     public float maxHealth;
     public float moveSpeed;
+    public float maxSpeed;
     public float deceleration;
     public float pitchSpeed;
     public float yawSpeed;
@@ -68,14 +69,20 @@ public class Bear : MonoBehaviour
 
         if (Mathf.Abs(input.y) > 0.1f)
         {
-            var sign = Mathf.Sign(input.y);
-            rb.AddForce(bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime);
+            if (rb.velocity.magnitude < maxSpeed)
+            {
+                var sign = Mathf.Sign(input.y);
+                rb.AddForce(bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime);
+            }
         }
 
         if (Mathf.Abs(input.x) > 0.1f)
         {
-            var sign = Mathf.Sign(input.x);
-            rb.AddForce(transform.right * sign * moveSpeed * Time.fixedDeltaTime);
+            if(rb.velocity.magnitude < maxSpeed)
+            {
+                var sign = Mathf.Sign(input.x);
+                rb.AddForce(transform.right * sign * moveSpeed * Time.fixedDeltaTime);
+            }
         }
 
         if(diveSurface != 0)
