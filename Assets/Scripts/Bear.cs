@@ -94,6 +94,7 @@ public class Bear : MonoBehaviour
         if(currentExperience >= experienceToNextLevel)
         {
             currentLevel++;
+            currentHealth = maxHealth;
             rateOfFire += rateOfFireGrowthRate;
             power += powerGrowthRate;
             fireDistance += fireDistanceGrowRate;
@@ -102,6 +103,7 @@ public class Bear : MonoBehaviour
             Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
             currentExperience = 0;
             hud.UpdateLevel(currentLevel);
+            hud.UpdateHealthBar(currentHealth, maxHealth);
         }
 
         hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
