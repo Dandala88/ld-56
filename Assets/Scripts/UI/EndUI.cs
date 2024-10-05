@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartUI : MonoBehaviour
+public class EndUI : MonoBehaviour
 {
     private void Start()
     {
@@ -11,7 +11,7 @@ public class StartUI : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void StartGame()
+    public void RestartGame()
     {
         SceneManager.LoadScene(1);
     }

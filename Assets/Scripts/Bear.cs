@@ -74,6 +74,5 @@ public class Bear : MonoBehaviour
     public void Roll(InputAction.CallbackContext context)
     {
         roll = context.ReadValue<float>();
-        Debug.Log(roll);
     }
 }
