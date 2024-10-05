@@ -15,13 +15,15 @@ public class Bear : MonoBehaviour
 
     private Vector2 input;
     private Vector2 pitchYaw;
-    private float roll;
+    private float diveSurface;
 
     private Rigidbody rb;
+    private BearRoot bearRoot;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        bearRoot = GetComponentInChildren<BearRoot>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -29,16 +31,17 @@ public class Bear : MonoBehaviour
     private void FixedUpdate()
     {
         var finalRotation = Vector3.zero;
- 
+
         finalRotation.x = -pitchYaw.y * pitchSpeed * Time.fixedDeltaTime;
         finalRotation.y = pitchYaw.x * yawSpeed * Time.fixedDeltaTime;
-        finalRotation.z = roll * rollSpeed * Time.fixedDeltaTime;
-        transform.Rotate(finalRotation);
+        //Pitch on root so that it does not cause gimbal crazies
+        bearRoot.transform.Rotate(Vector3.right * finalRotation.x);
+        transform.Rotate(Vector3.up * finalRotation.y);
 
         if (Mathf.Abs(input.y) > 0.1f)
         {
             var sign = Mathf.Sign(input.y);
-            rb.AddForce(transform.forward * sign * moveSpeed * Time.fixedDeltaTime);
+            rb.AddForce(bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime);
         }
 
         if (Mathf.Abs(input.x) > 0.1f)
@@ -46,6 +49,13 @@ public class Bear : MonoBehaviour
             var sign = Mathf.Sign(input.x);
             rb.AddForce(transform.right * sign * moveSpeed * Time.fixedDeltaTime);
         }
+
+        if(diveSurface != 0)
+        {
+            var sign = Mathf.Sign(diveSurface);
+            rb.AddForce(transform.up * sign * moveSpeed * Time.fixedDeltaTime);
+        }
+
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
     }
 
@@ -59,8 +69,8 @@ public class Bear : MonoBehaviour
         if(context.started)
         {
             var clone = Instantiate(laserPrefab);
-            clone.transform.position = transform.position;
-            clone.transform.forward = transform.forward;
+            clone.transform.position = laserOrigin.position;
+            clone.transform.forward = bearRoot.transform.forward;
         }
     }
 
@@ -71,8 +81,8 @@ public class Bear : MonoBehaviour
         pitchYaw.y = Mathf.Clamp(pitchYaw.y, -1f, 1f);
     }
 
-    public void Roll(InputAction.CallbackContext context)
+    public void DiveSurface(InputAction.CallbackContext context)
     {
-        roll = context.ReadValue<float>();
+        diveSurface = context.ReadValue<float>();
     }
 }

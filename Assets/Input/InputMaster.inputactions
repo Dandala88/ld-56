@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Roll",
+                    "name": "DiveSurface",
                     "type": "PassThrough",
                     "id": "bfe8d3e3-1c30-4792-8bbe-e43585507e9a",
                     "expectedControlType": "Axis",
@@ -127,29 +127,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "DiveSurface",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "negative",
                     "id": "86e36c0d-527e-4004-acf7-fbfb71ab289f",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "DiveSurface",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "positive",
                     "id": "740e9472-cfb3-44ef-bad0-1b3df230dbce",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "DiveSurface",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
