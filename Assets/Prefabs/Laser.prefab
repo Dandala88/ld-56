@@ -188,6 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  power: 1
+  lifetime: 1
 --- !u!1 &3878520632939091465
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +293,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Height: 3
+  m_Radius: 1.2
+  m_Height: 8
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -2, z: 0}
