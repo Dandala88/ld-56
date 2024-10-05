@@ -12,7 +12,6 @@ public class Bear : MonoBehaviour
     public float rollSpeed;
     public Laser laserPrefab;
     public Transform laserOrigin;
-    private float pitchYawMoveThreshold = 0.25f;
 
     private Vector2 input;
     private Vector2 pitchYaw;
