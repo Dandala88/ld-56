@@ -33,7 +33,7 @@ public class Laser : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var enemy = other.GetComponentInParent<Enemy>();
-        if (enemy != null)
+        if (enemy != null && !other.isTrigger)
         {
             var enemyDead = enemy.Hurt(power);
             if(enemyDead)

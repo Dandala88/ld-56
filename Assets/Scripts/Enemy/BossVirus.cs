@@ -13,6 +13,8 @@ public class BossVirus : Enemy
 
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
+    private bool aggro;
+    private Bear bear;
 
     protected void Awake()
     {
@@ -31,12 +33,15 @@ public class BossVirus : Enemy
     {
         base.Update();
 
-        shootElapsed += Time.deltaTime;
-
-        if (shootElapsed > shootInterval)
+        if (aggro)
         {
-            shootElapsed = 0;
-            Shoot();
+            shootElapsed += Time.deltaTime;
+
+            if (shootElapsed > shootInterval)
+            {
+                shootElapsed = 0;
+                Shoot();
+            }
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
@@ -49,7 +54,10 @@ public class BossVirus : Enemy
         {
             var clone = Instantiate(laserPrefab);
             clone.transform.position = turret.transform.position;
-            clone.transform.forward = turret.transform.forward;
+            if (bear != null)
+                clone.transform.forward = (bear.transform.position - transform.position).normalized;
+            else
+                clone.transform.forward = turret.transform.forward;
         }
     }
 
@@ -78,6 +86,26 @@ public class BossVirus : Enemy
 
                 Debug.DrawRay(turret.transform.position, transform.forward, Color.yellow, 60);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var bear = other.gameObject.GetComponentInParent<Bear>();
+        if(bear != null)
+        {
+            aggro = true;
+            this.bear = bear;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var bear = other.gameObject.GetComponentInParent<Bear>();
+        if (bear != null)
+        {
+            aggro = false;
+            this.bear = null;
         }
     }
 }
