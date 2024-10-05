@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Bear : MonoBehaviour
 {
     public float moveSpeed;
+    public Camera cam;
 
     private Vector2 input;
 
@@ -14,6 +15,7 @@ public class Bear : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
     }
 
     private void FixedUpdate()
@@ -24,6 +26,11 @@ public class Bear : MonoBehaviour
         // Apply the rotation to the vector
         Vector3 rotatedVector = rotation * inputVector;
         rb.velocity = rotatedVector * moveSpeed * Time.fixedDeltaTime;
+    }
+
+    private void LateUpdate()
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, cam.transform.rotation, 6f * Time.deltaTime);
     }
 
     public void Move(InputAction.CallbackContext context)
