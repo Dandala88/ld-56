@@ -167,6 +167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -235,6 +240,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -298,10 +308,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1661156042}
     m_Modifications:
+    - target: {fileID: 3325452252899170473, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a14e44c07cff723469d8906b955d6e9e, type: 2}
     - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -370,6 +390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -700,6 +725,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,6 +876,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -986,6 +1021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -1316,6 +1356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1390,6 +1435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1457,6 +1507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -1531,6 +1586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -1644,6 +1704,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1718,6 +1783,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1785,6 +1855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -1897,6 +1972,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1971,6 +2051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2038,6 +2123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -2164,6 +2254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bacteriophage (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2243,6 +2338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107288996947117979, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
@@ -2414,6 +2514,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1661156042}
     m_Modifications:
+    - target: {fileID: 3826370630958837939, guid: a4330c308d854454c82262f6621a83f0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5704410449256331811, guid: a4330c308d854454c82262f6621a83f0,
         type: 3}
       propertyPath: m_Name

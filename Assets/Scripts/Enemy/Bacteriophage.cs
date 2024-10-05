@@ -14,8 +14,9 @@ public class Bacteriophage : Enemy
         Move();
     }
 
-    public void Update()
+    private void Update()
     {
+        base.Update();
         moveElapsed += Time.deltaTime;
 
         if(moveElapsed > moveInterval)
