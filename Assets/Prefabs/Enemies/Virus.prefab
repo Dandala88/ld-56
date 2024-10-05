@@ -186,6 +186,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9faf62f1cd756184e8ddf8b3ae8c70b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3310613998774975170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7894011002080591730}
+  - component: {fileID: 4274269365308225571}
+  m_Layer: 0
+  m_Name: Aggro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7894011002080591730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310613998774975170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4289111851069122571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4274269365308225571
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310613998774975170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4211434412758323433
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +487,7 @@ Transform:
   m_Children:
   - {fileID: 7985230227320950206}
   - {fileID: 9655375356407754}
+  - {fileID: 7894011002080591730}
   - {fileID: 3458407019789766830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5341,6 +5395,7 @@ MonoBehaviour:
   moveForce: 500
   laserPrefab: {fileID: 4978446856740366901, guid: db399537722e25d4a8d8b738993bbf7d,
     type: 3}
+  aggro: 0
 --- !u!1001 &3827930008216464014
 PrefabInstance:
   m_ObjectHideFlags: 0
