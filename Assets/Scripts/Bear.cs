@@ -7,6 +7,8 @@ public class Bear : MonoBehaviour
 {
     public float moveSpeed;
     public Camera cam;
+    public Laser laserPrefab;
+    public Transform laserOrigin;
 
     private Vector2 input;
 
@@ -37,5 +39,15 @@ public class Bear : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
+    }
+
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            var clone = Instantiate(laserPrefab);
+            clone.transform.position = transform.position;
+            clone.transform.forward = transform.forward;
+        }
     }
 }

@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13180624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13180625}
+  m_Layer: 0
+  m_Name: LookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &13180625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13180624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 863335304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310700755
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19727032, y: -0.78313756, z: -0.30671448, w: 0.5036927}
+  m_LocalRotation: {x: 0.22991702, y: 0.7613087, z: 0.35747313, w: -0.48965308}
   m_LocalPosition: {x: 5.7720346, y: -5.1198916, z: 2.6309497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -426,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369253776}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18016133, y: -0.79304135, z: -0.28011343, w: 0.5100626}
+  m_LocalRotation: {x: 0.21326315, y: 0.77293783, z: 0.33157983, w: -0.49713254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -701,7 +732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485041210}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.1985704, y: -0.7823429, z: -0.30873576, w: 0.5031816}
+  m_LocalRotation: {x: 0.23118071, y: 0.76038307, z: 0.35943794, w: -0.48905772}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -851,6 +882,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 449964386}
+  - {fileID: 1403273182}
+  - {fileID: 13180625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &863335305
@@ -922,6 +955,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 52ca5f03-0b51-42e3-b23c-ea910991926b
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 863335307}
+        m_TargetAssemblyTypeName: Bear, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c26f6c3c-3912-45b7-8c19-b1432e57c0c2
+    m_ActionName: Player/Shoot[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -941,6 +990,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 200
   cam: {fileID: 0}
+  laserPrefab: {fileID: 5429049372818723895, guid: 9a3b0cb0ac190d7439a3bf432f33465d,
+    type: 3}
+  laserOrigin: {fileID: 1403273182}
 --- !u!1 &922533686
 GameObject:
   m_ObjectHideFlags: 3
@@ -1012,7 +1064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922533686}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18940927, y: -0.7878151, z: -0.2944922, w: 0.50670105}
+  m_LocalRotation: {x: 0.22227046, y: 0.76677865, z: 0.3455843, w: -0.49317122}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1508,6 +1560,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1403273181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403273182}
+  m_Layer: 0
+  m_Name: LaserOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403273182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403273181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 863335304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1568170875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1793,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 863335304}
+  m_LookAt: {fileID: 13180625}
   m_Follow: {fileID: 863335304}
   m_CommonLens: 1
   m_Lens:
