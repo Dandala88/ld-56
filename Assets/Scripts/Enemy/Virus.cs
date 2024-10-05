@@ -5,11 +5,24 @@ using UnityEngine;
 public class Virus : Enemy
 {
     public float moveInterval = 5f;
+    public float shootInterval = 5f;
+    public float deceleration;
     public float moveForce;
+    public EnemyLaser laserPrefab;
 
     private float moveElapsed;
+    private float shootElapsed;
+    private List<Turret> turrets = new List<Turret>();
 
-    private void Start()
+    protected void Awake()
+    {
+        base.Awake();
+        var turretChildren = GetComponentsInChildren<Turret>();
+        foreach(var turretChild in turretChildren)
+            turrets.Add(turretChild);
+    }
+
+    protected void Start()
     {
         Move();
     }
@@ -24,6 +37,16 @@ public class Virus : Enemy
             moveElapsed = 0;
             Move();
         }
+
+        shootElapsed += Time.deltaTime;
+
+        if (shootElapsed > shootInterval)
+        {
+            shootElapsed = 0;
+            Shoot();
+        }
+
+        rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
     }
 
     private void Move()
@@ -34,5 +57,15 @@ public class Virus : Enemy
         var rollVector = new Vector3(rollX, rollY, rollZ);
 
         rb.AddForce(rollVector * moveForce);
+    }
+
+    private void Shoot()
+    {
+        foreach(var turret in turrets)
+        {
+            var clone = Instantiate(laserPrefab);
+            clone.transform.position = turret.transform.position;
+            clone.transform.forward = turret.transform.forward;
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Bear : MonoBehaviour
 {
-    public int maxHealth;
+    public float maxHealth;
     public float moveSpeed;
     public float deceleration;
     public float pitchSpeed;
@@ -32,7 +32,7 @@ public class Bear : MonoBehaviour
     private int currentLevel = 1;
     private float currentExperience;
     private float experienceToNextLevel;
-    private int currentHealth;
+    private float currentHealth;
     private bool hurtInvincible;
     private bool inShootCooldown;
 
@@ -112,7 +112,7 @@ public class Bear : MonoBehaviour
         return baseExperience * Mathf.Pow(level, exponent);
     }
 
-    public void Hurt(int amount)
+    public void Hurt(float amount)
     {
         if (!hurtInvincible)
         {

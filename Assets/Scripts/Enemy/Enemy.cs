@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     protected GFX gfx;
     protected Collider collider;
 
-    private void Awake()
+    protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
         ps = GetComponent<ParticleSystem>();
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     protected void Update()
     {
-        if(!ps.IsAlive() && dying)
+        if(ps != null && !ps.IsAlive() && dying)
             Destroy(gameObject);
     }
 
