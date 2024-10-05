@@ -13,4 +13,10 @@ public class Laser : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponentInParent<Enemy>() != null)
+            Debug.Log("HIT");
+    }  
 }

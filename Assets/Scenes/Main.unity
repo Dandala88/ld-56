@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310700757}
   - component: {fileID: 310700756}
+  - component: {fileID: 310700758}
   m_Layer: 0
   m_Name: Ameoba (2)
   m_TagString: Untagged
@@ -197,7 +198,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!4 &310700757
 Transform:
   m_ObjectHideFlags: 0
@@ -214,6 +215,19 @@ Transform:
   - {fileID: 1316408369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &310700758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310700755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed408db1bb5b4e644a55e415b892ab85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22991702, y: 0.7613087, z: 0.35747313, w: -0.48965308}
+  m_LocalRotation: {x: 0.22991699, y: 0.7613088, z: 0.35747316, w: -0.48965293}
   m_LocalPosition: {x: 5.7720346, y: -5.1198916, z: 2.6309497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -457,7 +471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369253776}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21326315, y: 0.77293783, z: 0.33157983, w: -0.49713254}
+  m_LocalRotation: {x: 0.21326317, y: 0.77293783, z: 0.33157983, w: -0.49713257}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -732,7 +746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485041210}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23118071, y: 0.76038307, z: 0.35943794, w: -0.48905772}
+  m_LocalRotation: {x: 0.23118067, y: 0.7603831, z: 0.35943797, w: -0.48905766}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -750,6 +764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777337162}
   - component: {fileID: 777337163}
+  - component: {fileID: 777337164}
   m_Layer: 0
   m_Name: Ameoba
   m_TagString: Untagged
@@ -799,7 +814,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &777337164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777337161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed408db1bb5b4e644a55e415b892ab85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +940,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &863335306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,7 +1092,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922533686}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22227046, y: 0.76677865, z: 0.3455843, w: -0.49317122}
+  m_LocalRotation: {x: 0.22227046, y: 0.7667787, z: 0.34558433, w: -0.4931712}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1601,6 +1629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568170877}
   - component: {fileID: 1568170876}
+  - component: {fileID: 1568170878}
   m_Layer: 0
   m_Name: Ameoba (1)
   m_TagString: Untagged
@@ -1634,7 +1663,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!4 &1568170877
 Transform:
   m_ObjectHideFlags: 0
@@ -1651,6 +1680,19 @@ Transform:
   - {fileID: 1808783069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568170878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568170875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed408db1bb5b4e644a55e415b892ab85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &1808783068
 GameObject:
   m_ObjectHideFlags: 0
