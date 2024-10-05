@@ -24,7 +24,6 @@ public class Laser : MonoBehaviour
     private void Update()
     {
         currentDistance = Vector3.Distance(startPosition, transform.position);
-        Debug.Log(currentDistance);
         if(currentDistance > distance)
         {
             Destroy(gameObject);
@@ -36,8 +35,9 @@ public class Laser : MonoBehaviour
         var enemy = other.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
-            bear.GainExperience(enemy.experience);
-            enemy.Hurt(power);
+            var enemyDead = enemy.Hurt(power);
+            if(enemyDead)
+                bear.GainExperience(enemy.experience);
             Destroy(gameObject);
         }
     }  

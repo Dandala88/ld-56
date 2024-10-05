@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float experience;
     public int collisionDamage;
 
-    protected bool dying;
+    public bool dying;
     protected Rigidbody rb;
     protected ParticleSystem ps;
     protected GFX gfx;
@@ -29,7 +29,12 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void Hurt(float amount)
+    /// <summary>
+    /// returns true if enemy dies on this hit
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool Hurt(float amount)
     {
         if (!dying)
         {
@@ -37,8 +42,10 @@ public class Enemy : MonoBehaviour
             if (health <= 0)
             {
                 Die();
+                return true;
             }
         }
+        return false;
     }
 
     private void Die()
