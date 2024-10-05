@@ -5,29 +5,36 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
+    public float health;
     public float experience;
     public int collisionDamage;
 
-    protected bool dying;
+    public bool dying;
     protected Rigidbody rb;
     protected ParticleSystem ps;
     protected GFX gfx;
+    protected Collider collider;
 
-    private void Awake()
+    protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
         ps = GetComponent<ParticleSystem>();
         gfx = GetComponentInChildren<GFX>();
+        collider = GetComponentInChildren<Collider>();
     }
 
     protected void Update()
     {
-        if(!ps.IsAlive() && dying)
+        if(ps != null && !ps.IsAlive() && dying)
             Destroy(gameObject);
     }
 
-    public void Hurt(int amount)
+    /// <summary>
+    /// returns true if enemy dies on this hit
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool Hurt(float amount)
     {
         if (!dying)
         {
@@ -35,13 +42,16 @@ public class Enemy : MonoBehaviour
             if (health <= 0)
             {
                 Die();
+                return true;
             }
         }
+        return false;
     }
 
     private void Die()
     {
         gfx.gameObject.SetActive(false);
+        collider.gameObject.SetActive(false);
         dying = true;
         ps.Play();
     }

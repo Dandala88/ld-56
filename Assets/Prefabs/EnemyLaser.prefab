@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3817711676321855415}
   - component: {fileID: 2402734201190700776}
   - component: {fileID: 8851042190281891032}
-  - component: {fileID: 5429049372818723895}
+  - component: {fileID: 4978446856740366901}
   m_Layer: 0
-  m_Name: Laser
+  m_Name: EnemyLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84dea12dc93b88648909ca50a2745957, type: 2}
+  - {fileID: 2100000, guid: d42fd4b7d8024bc4085a764348901e16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,7 +175,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &5429049372818723895
+--- !u!114 &4978446856740366901
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,12 +184,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 448289295221002612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c47606a7c4089d4b8a3c744823649ab, type: 3}
+  m_Script: {fileID: 11500000, guid: f1cb79d7d2147864fb6a504001067424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 20
   power: 1
-  distance: 1
+  distance: 25
 --- !u!1 &3878520632939091465
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84dea12dc93b88648909ca50a2745957, type: 2}
+  - {fileID: 2100000, guid: d42fd4b7d8024bc4085a764348901e16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

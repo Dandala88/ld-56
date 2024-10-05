@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class EnemyLaser : MonoBehaviour
 {
     public float speed = 30f;
     public float power = 1;
@@ -24,7 +24,7 @@ public class Laser : MonoBehaviour
     private void Update()
     {
         currentDistance = Vector3.Distance(startPosition, transform.position);
-        if(currentDistance > distance)
+        if (currentDistance > distance)
         {
             Destroy(gameObject);
         }
@@ -32,13 +32,11 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var enemy = other.GetComponentInParent<Enemy>();
-        if (enemy != null && !other.isTrigger)
+        var bear = other.GetComponentInParent<Bear>();
+        if (bear != null)
         {
-            var enemyDead = enemy.Hurt(power);
-            if(enemyDead)
-                bear.GainExperience(enemy.experience);
+            bear.Hurt(power);
             Destroy(gameObject);
         }
-    }  
+    }
 }
