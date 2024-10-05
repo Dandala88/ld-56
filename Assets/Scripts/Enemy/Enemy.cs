@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
+    public float health;
     public float experience;
     public int collisionDamage;
 
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void Hurt(int amount)
+    public void Hurt(float amount)
     {
         if (!dying)
         {

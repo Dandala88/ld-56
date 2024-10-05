@@ -15,6 +15,12 @@ public class Bear : MonoBehaviour
     public float hurtITime = 1f;
     public float baseExperience = 10;
     public float experienceExponent = 1.25f;
+    public float power;
+    public float powerGrowthRate = 0.2f;
+    public float rateOfFire;
+    public float rateOfFireGrowthRate = 0.2f;
+    public float fireDistance;
+    public float fireDistanceGrowRate = 2f;
     public Laser laserPrefab;
     public Transform laserOrigin;
     public PauseUI pauseUI;
@@ -28,6 +34,7 @@ public class Bear : MonoBehaviour
     private float experienceToNextLevel;
     private int currentHealth;
     private bool hurtInvincible;
+    private bool inShootCooldown;
 
     private Rigidbody rb;
     private BearRoot bearRoot;
@@ -87,6 +94,9 @@ public class Bear : MonoBehaviour
         if(currentExperience >= experienceToNextLevel)
         {
             currentLevel++;
+            rateOfFire += rateOfFireGrowthRate;
+            power += powerGrowthRate;
+            fireDistance += fireDistanceGrowRate;
             var experienceToNextLevelNet = CalculateNextLevelExperience(currentLevel, experienceExponent);
             experienceToNextLevel = experienceToNextLevelNet - currentExperience;
             Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
@@ -119,19 +129,28 @@ public class Bear : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && !inShootCooldown)
         {
             var clone = Instantiate(laserPrefab);
             clone.transform.position = laserOrigin.position;
             clone.transform.forward = bearRoot.transform.forward;
+            clone.power = power;
+            clone.distance = fireDistance;
+            StartCoroutine(ShootCooldownCoroutine());
         }
+    }
+
+    private IEnumerator ShootCooldownCoroutine()
+    {
+        var seconds = 1 / rateOfFire;
+        inShootCooldown = true;
+        yield return new WaitForSeconds(seconds);
+        inShootCooldown = false;
     }
 
     public void PitchYaw(InputAction.CallbackContext context)
     {
         pitchYaw = context.ReadValue<Vector2>();
-        pitchYaw.x = Mathf.Clamp(pitchYaw.x, -1f, 1f);
-        pitchYaw.y = Mathf.Clamp(pitchYaw.y, -1f, 1f);
     }
 
     public void DiveSurface(InputAction.CallbackContext context)

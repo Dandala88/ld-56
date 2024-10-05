@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    public float speed = 75f;
-    public int power = 1;
-    public float lifetime = 1f;
-
-    private float lifeElapsed;
+    public float speed = 30f;
+    public float power = 1;
+    public float distance = 1f;
+    private Vector3 startPosition;
+    private float currentDistance;
 
     private Rigidbody rb;
     private Bear bear;
@@ -18,12 +18,14 @@ public class Laser : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
         bear = FindObjectOfType<Bear>();
+        startPosition = transform.position;
     }
 
     private void Update()
     {
-        lifeElapsed += Time.deltaTime;
-        if (lifeElapsed > lifetime)
+        currentDistance = Vector3.Distance(startPosition, transform.position);
+        Debug.Log(currentDistance);
+        if(currentDistance > distance)
         {
             Destroy(gameObject);
         }
