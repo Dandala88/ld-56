@@ -12,6 +12,7 @@ public class Bear : MonoBehaviour
     public float rollSpeed;
     public Laser laserPrefab;
     public Transform laserOrigin;
+    public PauseUI pauseUI;
 
     private Vector2 input;
     private Vector2 pitchYaw;
@@ -84,5 +85,16 @@ public class Bear : MonoBehaviour
     public void DiveSurface(InputAction.CallbackContext context)
     {
         diveSurface = context.ReadValue<float>();
+    }
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (pauseUI.paused)
+                pauseUI.ContinueGame();
+            else
+                pauseUI.gameObject.SetActive(true);
+        }
     }
 }
