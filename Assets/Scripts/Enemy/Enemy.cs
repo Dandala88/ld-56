@@ -6,6 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public int health;
 
+    protected Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     public void Hurt(int amount)
     {
         health -= amount;
