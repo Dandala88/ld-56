@@ -13,12 +13,14 @@ public class Enemy : MonoBehaviour
     protected Rigidbody rb;
     protected ParticleSystem ps;
     protected GFX gfx;
+    protected Collider collider;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         ps = GetComponent<ParticleSystem>();
         gfx = GetComponentInChildren<GFX>();
+        collider = GetComponentInChildren<Collider>();
     }
 
     protected void Update()
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         gfx.gameObject.SetActive(false);
+        collider.gameObject.SetActive(false);
         dying = true;
         ps.Play();
     }

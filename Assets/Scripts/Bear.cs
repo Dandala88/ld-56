@@ -13,6 +13,8 @@ public class Bear : MonoBehaviour
     public float rollSpeed;
     public float hurtKnockback = 500;
     public float hurtITime = 1f;
+    public float baseExperience = 10;
+    public float experienceExponent = 1.25f;
     public Laser laserPrefab;
     public Transform laserOrigin;
     public PauseUI pauseUI;
@@ -21,8 +23,9 @@ public class Bear : MonoBehaviour
     private Vector2 input;
     private Vector2 pitchYaw;
     private float diveSurface;
-    private int level;
-    private float experience;
+    private int currentLevel = 1;
+    private float currentExperience;
+    private float experienceToNextLevel;
     private int currentHealth;
     private bool hurtInvincible;
 
@@ -36,6 +39,14 @@ public class Bear : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         currentHealth = maxHealth;
+    }
+
+    private void Start()
+    {
+        experienceToNextLevel = CalculateNextLevelExperience(currentLevel, experienceExponent);
+        hud.UpdateLevel(currentLevel);
+        hud.UpdateHealthBar(currentHealth, maxHealth);
+        hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
     }
 
     private void FixedUpdate()
@@ -71,7 +82,24 @@ public class Bear : MonoBehaviour
 
     public void GainExperience(float experience)
     {
-        this.experience += experience;
+        currentExperience += experience;
+
+        if(currentExperience >= experienceToNextLevel)
+        {
+            currentLevel++;
+            var experienceToNextLevelNet = CalculateNextLevelExperience(currentLevel, experienceExponent);
+            experienceToNextLevel = experienceToNextLevelNet - currentExperience;
+            Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
+            currentExperience = 0;
+            hud.UpdateLevel(currentLevel);
+        }
+
+        hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
+    }
+
+    private float CalculateNextLevelExperience(int level, float exponent)
+    {
+        return baseExperience * Mathf.Pow(level, exponent);
     }
 
     public void Hurt(int amount)
