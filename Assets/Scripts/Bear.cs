@@ -29,20 +29,12 @@ public class Bear : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var finalRotation = Vector2.zero;
-        if (Mathf.Abs(pitchYaw.y) > pitchYawMoveThreshold)
-        {
-            var sign = Mathf.Sign(pitchYaw.y);
-            finalRotation.x = -sign * pitchSpeed * Time.fixedDeltaTime;
-        }
 
-        if (Mathf.Abs(pitchYaw.x) > pitchYawMoveThreshold)
-        {
-            var sign = Mathf.Sign(pitchYaw.x);
-            finalRotation.y = sign * yawSpeed * Time.fixedDeltaTime;
-        }
+        rb.AddTorque(Vector3.right * -pitchYaw.y * pitchSpeed * Time.fixedDeltaTime);
 
-        transform.Rotate(finalRotation);
+        rb.AddTorque(Vector3.up * pitchYaw.x * yawSpeed * Time.fixedDeltaTime);
+
+
 
         if (Mathf.Abs(input.y) > 0.1f)
         {
