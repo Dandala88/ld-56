@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Virus : Enemy
+public class Amoeba : Enemy
 {
     public float moveInterval = 5f;
     public float shootInterval = 5f;
@@ -20,7 +20,7 @@ public class Virus : Enemy
     {
         base.Awake();
         var turretChildren = GetComponentsInChildren<Turret>();
-        foreach(var turretChild in turretChildren)
+        foreach (var turretChild in turretChildren)
             turrets.Add(turretChild);
     }
 
@@ -56,21 +56,31 @@ public class Virus : Enemy
 
     private void Move()
     {
-        var rollX = Random.Range(-1f, 1f);
-        var rollY = Random.Range(-1f, 1f);
-        var rollZ = Random.Range(-1f, 1f);
-        var rollVector = new Vector3(rollX, rollY, rollZ);
+        if (bear != null)
+        {
+            rb.AddForce((bear.transform.position - transform.position).normalized * moveForce);
+        }
+        else
+        {
+            var rollX = Random.Range(-1f, 1f);
+            var rollY = Random.Range(-1f, 1f);
+            var rollZ = Random.Range(-1f, 1f);
+            var rollVector = new Vector3(rollX, rollY, rollZ);
 
-        rb.AddForce(rollVector * moveForce);
+            rb.AddForce(rollVector * moveForce);
+        }
     }
 
     private void Shoot()
     {
-        foreach(var turret in turrets)
+        foreach (var turret in turrets)
         {
             var clone = Instantiate(laserPrefab);
             clone.transform.position = turret.transform.position;
-            clone.transform.forward = turret.transform.forward;
+            if (bear != null)
+                clone.transform.forward = (bear.transform.position - transform.position).normalized;
+            else
+                clone.transform.forward = turret.transform.forward;
         }
     }
 

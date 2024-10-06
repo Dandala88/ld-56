@@ -15,6 +15,8 @@ public class BossVirus : Enemy
     private List<Turret> turrets = new List<Turret>();
     private bool aggro;
     private Bear bear;
+    private List<EnemyLaser> laserPool = new List<EnemyLaser>();
+    private int laserPoolIterator;
 
     protected void Awake()
     {
@@ -24,6 +26,7 @@ public class BossVirus : Enemy
     private void Start()
     {
         GenerateTurrets();
+        SetupLaserPool();
         var turretChildren = GetComponentsInChildren<Turret>();
         foreach (var turretChild in turretChildren)
             turrets.Add(turretChild);
@@ -52,12 +55,16 @@ public class BossVirus : Enemy
     {
         foreach (var turret in turrets)
         {
-            var clone = Instantiate(laserPrefab);
+            var clone = laserPool[laserPoolIterator];
+            laserPoolIterator++;
+            if (laserPoolIterator >= laserPool.Count)
+                laserPoolIterator = 0;
             clone.transform.position = turret.transform.position;
             if (bear != null)
                 clone.transform.forward = (bear.transform.position - transform.position).normalized;
             else
                 clone.transform.forward = turret.transform.forward;
+            clone.gameObject.SetActive(true);
         }
     }
 
@@ -106,6 +113,16 @@ public class BossVirus : Enemy
         {
             aggro = false;
             this.bear = null;
+        }
+    }
+
+    private void SetupLaserPool()
+    {
+        for(int i= 0; i < 1000; i++)
+        {
+            var clone = Instantiate(laserPrefab);
+            clone.gameObject.SetActive(false);
+            laserPool.Add(clone);
         }
     }
 }

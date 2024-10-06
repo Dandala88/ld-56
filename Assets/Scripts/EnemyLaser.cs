@@ -12,13 +12,30 @@ public class EnemyLaser : MonoBehaviour
 
     private Rigidbody rb;
     private Bear bear;
+    private bool alreadyInstantiated;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        bear = FindObjectOfType<Bear>();
+    }
+
+    private void OnEnable()
+    {
+        //first script load ignore this code
+        if (alreadyInstantiated)
+        {
+            if (rb != null)
+                rb.velocity = transform.forward * speed;
+            startPosition = transform.position;
+        }
+    }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
-        bear = FindObjectOfType<Bear>();
         startPosition = transform.position;
+        alreadyInstantiated = true;
     }
 
     private void Update()
@@ -26,7 +43,7 @@ public class EnemyLaser : MonoBehaviour
         currentDistance = Vector3.Distance(startPosition, transform.position);
         if (currentDistance > distance)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -36,7 +53,7 @@ public class EnemyLaser : MonoBehaviour
         if (bear != null)
         {
             bear.Hurt(power);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
