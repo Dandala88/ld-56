@@ -197,9 +197,35 @@ public class Bear : MonoBehaviour
         input = context.ReadValue<Vector2>();
     }
 
+    private bool shooting;
     public void Shoot(InputAction.CallbackContext context)
     {
         if(context.started && !inShootCooldown)
+        {
+            shooting = true;
+            var clone = Instantiate(laserPrefab);
+            clone.transform.position = laserOrigin.position;
+            clone.transform.forward = bearRoot.transform.forward;
+            clone.power = power;
+            clone.distance = fireDistance;
+            clone.baseSpeed = rb.velocity.magnitude;
+            audioSource.PlayOneShot(laserSound);
+            StartCoroutine(ShootCooldownCoroutine());
+        }
+
+        if(context.canceled)
+        {
+            shooting = false;
+        }
+    }
+
+    private IEnumerator ShootCooldownCoroutine()
+    {
+        var seconds = 1 / rateOfFire;
+        inShootCooldown = true;
+        yield return new WaitForSeconds(seconds);
+        inShootCooldown = false;
+        if (shooting)
         {
             var clone = Instantiate(laserPrefab);
             clone.transform.position = laserOrigin.position;
@@ -210,14 +236,6 @@ public class Bear : MonoBehaviour
             audioSource.PlayOneShot(laserSound);
             StartCoroutine(ShootCooldownCoroutine());
         }
-    }
-
-    private IEnumerator ShootCooldownCoroutine()
-    {
-        var seconds = 1 / rateOfFire;
-        inShootCooldown = true;
-        yield return new WaitForSeconds(seconds);
-        inShootCooldown = false;
     }
 
     public void PitchYaw(InputAction.CallbackContext context)

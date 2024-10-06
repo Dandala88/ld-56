@@ -26,8 +26,8 @@ public class HUD : MonoBehaviour
     public void UpdateLevel(int newLevel, float newRateOfFire, float newFireDistance, float newFirePower)
     {
         level.text = newLevel.ToString();
-        rateOfFire.text = $"{newRateOfFire} / sec";
+        rateOfFire.text = $"{newRateOfFire.ToString("0.0")} / sec";
         fireDistance.text = $"{newFireDistance} μm";
-        firePower.text = $"{newFirePower}";
+        firePower.text = $"{newFirePower.ToString("0.0")}";
     }
 }

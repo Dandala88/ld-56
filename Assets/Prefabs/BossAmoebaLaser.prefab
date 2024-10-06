@@ -188,8 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  power: 3
-  distance: 150
+  power: 2
+  distance: 300
 --- !u!1 &3878520632939091465
 GameObject:
   m_ObjectHideFlags: 0
