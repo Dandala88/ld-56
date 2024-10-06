@@ -153,6 +153,7 @@ public class Bear : MonoBehaviour
             clone.transform.forward = bearRoot.transform.forward;
             clone.power = power;
             clone.distance = fireDistance;
+            clone.baseSpeed = rb.velocity.magnitude;
             audioSource.PlayOneShot(laserSound);
             StartCoroutine(ShootCooldownCoroutine());
         }
