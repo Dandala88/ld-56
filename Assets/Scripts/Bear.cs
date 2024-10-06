@@ -27,6 +27,7 @@ public class Bear : MonoBehaviour
     public PauseUI pauseUI;
     public HUD hud;
     public Animator animator;
+    public AudioClip laserSound;
 
     private Vector2 input;
     private Vector2 pitchYaw;
@@ -40,11 +41,13 @@ public class Bear : MonoBehaviour
 
     private Rigidbody rb;
     private BearRoot bearRoot;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         bearRoot = GetComponentInChildren<BearRoot>();
+        audioSource = GetComponent<AudioSource>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         currentHealth = maxHealth;
@@ -150,6 +153,7 @@ public class Bear : MonoBehaviour
             clone.transform.forward = bearRoot.transform.forward;
             clone.power = power;
             clone.distance = fireDistance;
+            audioSource.PlayOneShot(laserSound);
             StartCoroutine(ShootCooldownCoroutine());
         }
     }

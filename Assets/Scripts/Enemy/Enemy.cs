@@ -13,14 +13,15 @@ public class Enemy : MonoBehaviour
     protected Rigidbody rb;
     protected ParticleSystem ps;
     protected GFX gfx;
-    protected Collider collider;
+    public Collider hurtBox;
+    protected AudioSource audioSource;
 
     protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
         ps = GetComponent<ParticleSystem>();
         gfx = GetComponentInChildren<GFX>();
-        collider = GetComponentInChildren<Collider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected void Update()
@@ -48,10 +49,12 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
+    [ContextMenu("KILL")]
     private void Die()
     {
+        audioSource.Play();
         gfx.gameObject.SetActive(false);
-        collider.gameObject.SetActive(false);
+        hurtBox.enabled = false;
         dying = true;
         ps.Play();
     }

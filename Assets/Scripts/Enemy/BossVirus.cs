@@ -32,7 +32,7 @@ public class BossVirus : Enemy
             turrets.Add(turretChild);
     }
 
-    private void Update()
+    protected void Update()
     {
         base.Update();
 
