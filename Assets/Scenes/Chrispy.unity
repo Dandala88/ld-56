@@ -785,7 +785,7 @@ Animator:
   m_GameObject: {fileID: 443153382}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2b3afb8ec1378847b7851e1f56b7932, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1777,6 +1777,7 @@ MonoBehaviour:
   laserOrigin: {fileID: 1403273182}
   pauseUI: {fileID: 63916385}
   hud: {fileID: 1583882681}
+  animator: {fileID: 0}
 --- !u!1 &885095760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,7 +2537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c36c555df743c34fbb7f4654cb47549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bosslist: []
+  bosslist:
+  - {fileID: 1634204045}
 --- !u!4 &1171605093
 Transform:
   m_ObjectHideFlags: 0
@@ -3440,6 +3442,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631565895}
   m_CullTransparentMesh: 1
+--- !u!114 &1634204045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7846678111247754675, guid: a4330c308d854454c82262f6621a83f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7111634523604713536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ae5ee4d2e7b3a4b8224ae37b00a107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1639718708
 PrefabInstance:
   m_ObjectHideFlags: 0
