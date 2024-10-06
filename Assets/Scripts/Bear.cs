@@ -103,7 +103,6 @@ public class Bear : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(rb.velocity.magnitude);
         var finalRotation = Vector3.zero;
 
         finalRotation.x = -pitchYaw.y * pitchSpeed * Time.fixedDeltaTime;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Amoeba : Enemy
+public class Bacteria : Enemy
 {
     public float moveInterval = 5f;
     public float shootInterval = 5f;
@@ -45,11 +45,25 @@ public class Amoeba : Enemy
             if (shootElapsed > shootInterval)
             {
                 shootElapsed = 0;
-                Shoot();
+                StartCoroutine(ShootCoroutine());
             }
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
+    }
+
+    int shootIndex;
+    private IEnumerator ShootCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (shootIndex < 5)
+        {
+            shootIndex++;
+            Shoot();
+            StartCoroutine(ShootCoroutine());
+        }
+        else
+            shootIndex = 0;
     }
 
     private void Move()

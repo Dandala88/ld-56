@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8851042190281891032}
   - component: {fileID: 4978446856740366901}
   m_Layer: 6
-  m_Name: AmoebaLaser
+  m_Name: BacteriaLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cb79d7d2147864fb6a504001067424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  power: 1
-  distance: 30
+  speed: 35
+  power: 3
+  distance: 50
 --- !u!1 &3878520632939091465
 GameObject:
   m_ObjectHideFlags: 0
