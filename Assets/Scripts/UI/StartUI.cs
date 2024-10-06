@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class StartUI : MonoBehaviour
 {
+    public AudioManager audioManager;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -13,6 +15,7 @@ public class StartUI : MonoBehaviour
 
     public void StartGame()
     {
+        audioManager.PlayTrack();
         SceneManager.LoadScene(1);
     }
 
