@@ -12,6 +12,7 @@ public class EnemyLaser : MonoBehaviour
 
     private Rigidbody rb;
     private Bear bear;
+    private bool alreadyInstantiated;
 
     private void Awake()
     {
@@ -21,9 +22,20 @@ public class EnemyLaser : MonoBehaviour
 
     private void OnEnable()
     {
-        if(rb != null)
-            rb.velocity = transform.forward * speed;
+        //first script load ignore this code
+        if (alreadyInstantiated)
+        {
+            if (rb != null)
+                rb.velocity = transform.forward * speed;
             startPosition = transform.position;
+        }
+    }
+
+    private void Start()
+    {
+        rb.velocity = transform.forward * speed;
+        startPosition = transform.position;
+        alreadyInstantiated = true;
     }
 
     private void Update()

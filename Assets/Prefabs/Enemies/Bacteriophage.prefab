@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2813593404583834487}
   - component: {fileID: 3826370630958837939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4187245515971498897}
   - component: {fileID: 3909904035365533703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,9 +111,9 @@ GameObject:
   - component: {fileID: 7846678111247754675}
   - component: {fileID: 982316025946151685}
   - component: {fileID: 7571400353240931430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bacteriophage
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   health: 1
   experience: 1
   collisionDamage: 1
+  dying: 0
   moveInterval: 2
   moveForce: 15
 --- !u!199 &982316025946151685
@@ -5042,6 +5043,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2813593404583834487}
     m_Modifications:
+    - target: {fileID: -9100651813424220368, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8843495163917031539, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5092,15 +5103,115 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603462977510526318, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -7885789946687648317, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a14e44c07cff723469d8906b955d6e9e, type: 2}
+    - target: {fileID: -7283801576925260990, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6892655222285791719, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4187836625052328791, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3800081404122534028, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1219057151853061763, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -754829849994234104, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 894632449390571670, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
         type: 3}
       propertyPath: m_Name
       value: Bacteriophage(1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264459011129265899, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267900174883056246, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455760950047564400, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339112634879318373, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280729083418208633, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545602108058726158, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828780703955027538, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946725628102197389, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051498059899127525, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156789254457802285, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634569673801664867, guid: bdad0a4c9f963194a9f98670ec3ffa3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

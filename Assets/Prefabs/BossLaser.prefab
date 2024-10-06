@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2402734201190700776}
   - component: {fileID: 8851042190281891032}
   - component: {fileID: 4978446856740366901}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BossLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 1012434347185133498}
   - component: {fileID: 95623774101462249}
   - component: {fileID: 3899788707987990100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
