@@ -66,7 +66,7 @@ public class Amoeba : Enemy
             var rollY = Random.Range(-1f, 1f);
             var rollZ = Random.Range(-1f, 1f);
             var rollVector = new Vector3(rollX, rollY, rollZ);
-
+            transform.forward = rollVector;
             rb.AddForce(rollVector * moveForce);
         }
     }
