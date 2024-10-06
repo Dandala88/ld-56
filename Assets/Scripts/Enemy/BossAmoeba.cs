@@ -24,6 +24,7 @@ public class BossAmoeba : Enemy
 
     private void Start()
     {
+        healthbar.enabled = false;
         SetupLaserPool();
         var turretChildren = GetComponentsInChildren<Turret>();
         foreach (var turretChild in turretChildren)

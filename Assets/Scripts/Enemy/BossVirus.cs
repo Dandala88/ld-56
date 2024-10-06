@@ -24,6 +24,7 @@ public class BossVirus : Enemy
 
     private void Start()
     {
+        healthbar.enabled = false;
         GenerateTurrets();
         SetupLaserPool();
         var turretChildren = GetComponentsInChildren<Turret>();
