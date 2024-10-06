@@ -56,7 +56,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 87975b2af245c8f449f136cb2721c730, type: 2}
+  - {fileID: 2100000, guid: d42fd4b7d8024bc4085a764348901e16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   power: 1
-  distance: 25
+  distance: 30
 --- !u!1 &3878520632939091465
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 87975b2af245c8f449f136cb2721c730, type: 2}
+  - {fileID: 2100000, guid: d42fd4b7d8024bc4085a764348901e16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

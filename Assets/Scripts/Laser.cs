@@ -9,6 +9,7 @@ public class Laser : MonoBehaviour
     public float distance = 1f;
     private Vector3 startPosition;
     private float currentDistance;
+    public float baseSpeed;
 
     private Rigidbody rb;
     private Bear bear;
@@ -16,7 +17,7 @@ public class Laser : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
+        rb.velocity = transform.forward * (speed + baseSpeed);
         bear = FindObjectOfType<Bear>();
         startPosition = transform.position;
     }

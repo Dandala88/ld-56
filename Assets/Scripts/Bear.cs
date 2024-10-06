@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Bear : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Bear : MonoBehaviour
     public PauseUI pauseUI;
     public HUD hud;
     public Animator animator;
+    public AudioClip laserSound;
 
     private Vector2 input;
     private Vector2 pitchYaw;
@@ -40,11 +42,20 @@ public class Bear : MonoBehaviour
 
     private Rigidbody rb;
     private BearRoot bearRoot;
+    private AudioSource audioSource;
+
+    private float startingPower;
+    private float startingExperience;
+    private float startingRateOfFire;
+    private int startingLevel;
+    private float startingFireDistance;
+    private float startingMaxHealth;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         bearRoot = GetComponentInChildren<BearRoot>();
+        audioSource = GetComponent<AudioSource>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         currentHealth = maxHealth;
@@ -52,10 +63,47 @@ public class Bear : MonoBehaviour
 
     private void Start()
     {
+        if(GameManager.playerLoaded)
+        {
+            power = GameManager.playerPower;
+            rateOfFire = GameManager.playerRateOfFire;
+            currentLevel = GameManager.playerLevel;
+            fireDistance = GameManager.playerShootDistance;
+            currentExperience = GameManager.playerCurrentExperience;
+            maxHealth = GameManager.playerMaxHealth;
+
+            startingPower = GameManager.playerPower;
+            startingRateOfFire = GameManager.playerRateOfFire;
+            startingLevel = GameManager.playerLevel;
+            startingFireDistance = GameManager.playerShootDistance;
+            startingExperience = GameManager.playerCurrentExperience;
+            startingMaxHealth = GameManager.playerMaxHealth;
+        }
+        else
+        {
+            startingPower = power;
+            startingRateOfFire = rateOfFire;
+            startingLevel = currentLevel;
+            startingFireDistance = fireDistance;
+            startingExperience = currentExperience;
+            startingMaxHealth = maxHealth;
+        }
+
         experienceToNextLevel = CalculateNextLevelExperience(currentLevel, experienceExponent);
-        hud.UpdateLevel(currentLevel);
+        hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power, maxHealth);
         hud.UpdateHealthBar(currentHealth, maxHealth);
         hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
+        GameManager.playerLoaded = true;
+    }
+
+    private void Update()
+    {
+        GameManager.playerLevel = currentLevel;
+        GameManager.playerPower = power;
+        GameManager.playerShootDistance = fireDistance;
+        GameManager.playerCurrentExperience = currentExperience;
+        GameManager.playerRateOfFire = rateOfFire;
+        GameManager.playerMaxHealth = maxHealth;
     }
 
     private void FixedUpdate()
@@ -73,7 +121,7 @@ public class Bear : MonoBehaviour
             if (rb.velocity.magnitude < maxSpeed)
             {
                 var sign = Mathf.Sign(input.y);
-                rb.AddForce(bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime);
+                rb.velocity += bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime;
             }
         }
 
@@ -82,14 +130,14 @@ public class Bear : MonoBehaviour
             if(rb.velocity.magnitude < maxSpeed)
             {
                 var sign = Mathf.Sign(input.x);
-                rb.AddForce(transform.right * sign * moveSpeed * Time.fixedDeltaTime);
+                rb.velocity += transform.right * sign * moveSpeed * Time.fixedDeltaTime;
             }
         }
 
         if(diveSurface != 0)
         {
             var sign = Mathf.Sign(diveSurface);
-            rb.AddForce(transform.up * sign * moveSpeed * Time.fixedDeltaTime);
+            rb.velocity += transform.up * sign * moveSpeed * Time.fixedDeltaTime;
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
@@ -106,11 +154,12 @@ public class Bear : MonoBehaviour
             rateOfFire += rateOfFireGrowthRate;
             power += powerGrowthRate;
             fireDistance += fireDistanceGrowRate;
+            maxHealth++;
             var experienceToNextLevelNet = CalculateNextLevelExperience(currentLevel, experienceExponent);
             experienceToNextLevel = experienceToNextLevelNet - currentExperience;
             Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
             currentExperience = 0;
-            hud.UpdateLevel(currentLevel);
+            hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power, maxHealth);
             hud.UpdateHealthBar(currentHealth, maxHealth);
         }
 
@@ -129,11 +178,23 @@ public class Bear : MonoBehaviour
             currentHealth -= amount;
             if(currentHealth <= 0)
             {
-                animator.SetBool("Dead", true);
+                StartCoroutine(DeathCoroutine());
             }
             hud.UpdateHealthBar(currentHealth, maxHealth);
             StartCoroutine(HurtInvincibleCoroutine());
         }
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(3);
+        GameManager.playerLevel = startingLevel;
+        GameManager.playerPower = startingPower;
+        GameManager.playerShootDistance = startingFireDistance;
+        GameManager.playerCurrentExperience = startingExperience;
+        GameManager.playerRateOfFire = startingRateOfFire;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -141,16 +202,25 @@ public class Bear : MonoBehaviour
         input = context.ReadValue<Vector2>();
     }
 
+    private bool shooting;
     public void Shoot(InputAction.CallbackContext context)
     {
         if(context.started && !inShootCooldown)
         {
+            shooting = true;
             var clone = Instantiate(laserPrefab);
             clone.transform.position = laserOrigin.position;
             clone.transform.forward = bearRoot.transform.forward;
             clone.power = power;
             clone.distance = fireDistance;
+            clone.baseSpeed = rb.velocity.magnitude;
+            audioSource.PlayOneShot(laserSound);
             StartCoroutine(ShootCooldownCoroutine());
+        }
+
+        if(context.canceled)
+        {
+            shooting = false;
         }
     }
 
@@ -160,6 +230,17 @@ public class Bear : MonoBehaviour
         inShootCooldown = true;
         yield return new WaitForSeconds(seconds);
         inShootCooldown = false;
+        if (shooting)
+        {
+            var clone = Instantiate(laserPrefab);
+            clone.transform.position = laserOrigin.position;
+            clone.transform.forward = bearRoot.transform.forward;
+            clone.power = power;
+            clone.distance = fireDistance;
+            clone.baseSpeed = rb.velocity.magnitude;
+            audioSource.PlayOneShot(laserSound);
+            StartCoroutine(ShootCooldownCoroutine());
+        }
     }
 
     public void PitchYaw(InputAction.CallbackContext context)

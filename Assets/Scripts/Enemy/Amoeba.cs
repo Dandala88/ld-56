@@ -9,12 +9,10 @@ public class Amoeba : Enemy
     public float deceleration;
     public float moveForce;
     public EnemyLaser laserPrefab;
-    public bool aggro;
 
     private float moveElapsed;
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
-    private Bear bear;
 
     protected void Awake()
     {
@@ -58,7 +56,9 @@ public class Amoeba : Enemy
     {
         if (bear != null)
         {
-            rb.AddForce((bear.transform.position - transform.position).normalized * moveForce);
+            var force = (bear.transform.position - transform.position).normalized * moveForce;
+            rb.AddForce(force);
+            transform.forward = -force.normalized;
         }
         else
         {
@@ -66,7 +66,7 @@ public class Amoeba : Enemy
             var rollY = Random.Range(-1f, 1f);
             var rollZ = Random.Range(-1f, 1f);
             var rollVector = new Vector3(rollX, rollY, rollZ);
-
+            transform.forward = -rollVector;
             rb.AddForce(rollVector * moveForce);
         }
     }
@@ -81,26 +81,6 @@ public class Amoeba : Enemy
                 clone.transform.forward = (bear.transform.position - transform.position).normalized;
             else
                 clone.transform.forward = turret.transform.forward;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = true;
-            this.bear = bear;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = false;
-            this.bear = null;
         }
     }
 }
