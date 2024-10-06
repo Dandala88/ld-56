@@ -26,6 +26,7 @@ public class Bear : MonoBehaviour
     public Transform laserOrigin;
     public PauseUI pauseUI;
     public HUD hud;
+    public Animator animator;
 
     private Vector2 input;
     private Vector2 pitchYaw;
@@ -126,6 +127,10 @@ public class Bear : MonoBehaviour
         if (!hurtInvincible)
         {
             currentHealth -= amount;
+            if(currentHealth <= 0)
+            {
+                animator.SetBool("Dead", true);
+            }
             hud.UpdateHealthBar(currentHealth, maxHealth);
             StartCoroutine(HurtInvincibleCoroutine());
         }
