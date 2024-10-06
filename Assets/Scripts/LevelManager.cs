@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Win")]
     public void Win()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Update()

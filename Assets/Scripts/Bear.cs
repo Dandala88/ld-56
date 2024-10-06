@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Bear : MonoBehaviour
 {
@@ -43,6 +44,12 @@ public class Bear : MonoBehaviour
     private BearRoot bearRoot;
     private AudioSource audioSource;
 
+    private float startingPower;
+    private float startingExperience;
+    private float startingRateOfFire;
+    private int startingLevel;
+    private float startingFireDistance;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -55,10 +62,43 @@ public class Bear : MonoBehaviour
 
     private void Start()
     {
+        if(GameManager.playerLoaded)
+        {
+            power = GameManager.playerPower;
+            rateOfFire = GameManager.playerRateOfFire;
+            currentLevel = GameManager.playerLevel;
+            fireDistance = GameManager.playerShootDistance;
+            currentExperience = GameManager.playerCurrentExperience;
+
+            startingPower = GameManager.playerPower;
+            startingRateOfFire = GameManager.playerRateOfFire;
+            startingLevel = GameManager.playerLevel;
+            startingFireDistance = GameManager.playerShootDistance;
+            startingExperience = GameManager.playerCurrentExperience;
+        }
+        else
+        {
+            startingPower = power;
+            startingRateOfFire = rateOfFire;
+            startingLevel = currentLevel;
+            startingFireDistance = fireDistance;
+            startingExperience = currentExperience;
+        }
+
         experienceToNextLevel = CalculateNextLevelExperience(currentLevel, experienceExponent);
         hud.UpdateLevel(currentLevel);
         hud.UpdateHealthBar(currentHealth, maxHealth);
         hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
+        GameManager.playerLoaded = true;
+    }
+
+    private void Update()
+    {
+        GameManager.playerLevel = currentLevel;
+        GameManager.playerPower = power;
+        GameManager.playerShootDistance = fireDistance;
+        GameManager.playerCurrentExperience = currentExperience;
+        GameManager.playerRateOfFire = rateOfFire;
     }
 
     private void FixedUpdate()
@@ -132,11 +172,23 @@ public class Bear : MonoBehaviour
             currentHealth -= amount;
             if(currentHealth <= 0)
             {
-                animator.SetBool("Dead", true);
+                StartCoroutine(DeathCoroutine());
             }
             hud.UpdateHealthBar(currentHealth, maxHealth);
             StartCoroutine(HurtInvincibleCoroutine());
         }
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(3);
+        GameManager.playerLevel = startingLevel;
+        GameManager.playerPower = startingPower;
+        GameManager.playerShootDistance = startingFireDistance;
+        GameManager.playerCurrentExperience = startingExperience;
+        GameManager.playerRateOfFire = startingRateOfFire;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Move(InputAction.CallbackContext context)
