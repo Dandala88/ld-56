@@ -86,7 +86,7 @@ public class Bear : MonoBehaviour
         }
 
         experienceToNextLevel = CalculateNextLevelExperience(currentLevel, experienceExponent);
-        hud.UpdateLevel(currentLevel);
+        hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power);
         hud.UpdateHealthBar(currentHealth, maxHealth);
         hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
         GameManager.playerLoaded = true;
@@ -153,7 +153,7 @@ public class Bear : MonoBehaviour
             experienceToNextLevel = experienceToNextLevelNet - currentExperience;
             Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
             currentExperience = 0;
-            hud.UpdateLevel(currentLevel);
+            hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power);
             hud.UpdateHealthBar(currentHealth, maxHealth);
         }
 

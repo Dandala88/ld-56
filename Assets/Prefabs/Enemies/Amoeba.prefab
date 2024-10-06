@@ -5063,18 +5063,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df218a16b1b7bde4e88bbd35878c23b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  experience: 3
+  health: 10
+  experience: 5
   collisionDamage: 3
   dying: 0
   hurtBox: {fileID: 681207296902919767}
+  healthbar: {fileID: 0}
   moveInterval: 3
   shootInterval: 1
   deceleration: 10
   moveForce: 1200
   laserPrefab: {fileID: 4978446856740366901, guid: 38d2bb08e22520046860890c8e1524fa,
     type: 3}
-  aggro: 0
 --- !u!82 &-8038245493290718695
 AudioSource:
   m_ObjectHideFlags: 0

@@ -419,14 +419,14 @@ MonoBehaviour:
   rollSpeed: 50
   hurtKnockback: 500
   hurtITime: 1
-  baseExperience: 1
-  experienceExponent: 1.25
+  baseExperience: 2
+  experienceExponent: 1.5
   power: 1
   powerGrowthRate: 0.2
   rateOfFire: 2
   rateOfFireGrowthRate: 0.2
   fireDistance: 10
-  fireDistanceGrowRate: 2
+  fireDistanceGrowRate: 8
   laserPrefab: {fileID: 5429049372818723895, guid: 9a3b0cb0ac190d7439a3bf432f33465d,
     type: 3}
   laserOrigin: {fileID: 1102731504553474863}
