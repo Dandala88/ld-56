@@ -40,13 +40,13 @@ public class EnemySpawner : MonoBehaviour
             clone.transform.position = transform.position + (randomDirection * randomDistance);
         }
     }
+}
 
-    [Serializable]
-    public class EnemySpawn
-    {
-        public Enemy prefab;
-        [Tooltip("0 is rare, 1 is common")]
-        [Range(0, 1)]
-        public float rarity;
-    }
+[Serializable]
+public class EnemySpawn
+{
+    public Enemy prefab;
+    [Tooltip("0 is rare, 1 is common")]
+    [Range(0, 1)]
+    public float rarity;
 }
