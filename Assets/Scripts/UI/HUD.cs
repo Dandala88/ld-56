@@ -8,14 +8,19 @@ public class HUD : MonoBehaviour
 {
     public Image healthBar;
     public Image experienceBar;
+    public TextMeshProUGUI health;
     public TextMeshProUGUI level;
     public TextMeshProUGUI rateOfFire;
     public TextMeshProUGUI fireDistance;
     public TextMeshProUGUI firePower;
 
+    private float currentHealth;
+
     public void UpdateHealthBar(float currentHealth, float maxHealth)
     {
+        this.currentHealth = currentHealth;
         healthBar.fillAmount = currentHealth / maxHealth;
+        health.text = $"{currentHealth}/{maxHealth}";
     }
 
     public void UpdateExperienceBar(float currentExperience, float experienceToNextLevel)
@@ -23,11 +28,12 @@ public class HUD : MonoBehaviour
         experienceBar.fillAmount = currentExperience / experienceToNextLevel;
     }
 
-    public void UpdateLevel(int newLevel, float newRateOfFire, float newFireDistance, float newFirePower)
+    public void UpdateLevel(int newLevel, float newRateOfFire, float newFireDistance, float newFirePower, float newMaxHealth)
     {
         level.text = newLevel.ToString();
         rateOfFire.text = $"{newRateOfFire.ToString("0.0")} / sec";
         fireDistance.text = $"{newFireDistance} μm";
         firePower.text = $"{newFirePower.ToString("0.0")}";
+        health.text = $"{currentHealth}/{newMaxHealth}";
     }
 }

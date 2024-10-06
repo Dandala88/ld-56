@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static float playerShootDistance;
     public static float playerCurrentExperience;
     public static bool playerLoaded;
+    public static float playerMaxHealth;
 
 
     private void Awake()

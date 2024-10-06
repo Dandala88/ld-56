@@ -49,6 +49,7 @@ public class Bear : MonoBehaviour
     private float startingRateOfFire;
     private int startingLevel;
     private float startingFireDistance;
+    private float startingMaxHealth;
 
     private void Awake()
     {
@@ -69,12 +70,14 @@ public class Bear : MonoBehaviour
             currentLevel = GameManager.playerLevel;
             fireDistance = GameManager.playerShootDistance;
             currentExperience = GameManager.playerCurrentExperience;
+            maxHealth = GameManager.playerMaxHealth;
 
             startingPower = GameManager.playerPower;
             startingRateOfFire = GameManager.playerRateOfFire;
             startingLevel = GameManager.playerLevel;
             startingFireDistance = GameManager.playerShootDistance;
             startingExperience = GameManager.playerCurrentExperience;
+            startingMaxHealth = GameManager.playerMaxHealth;
         }
         else
         {
@@ -83,10 +86,11 @@ public class Bear : MonoBehaviour
             startingLevel = currentLevel;
             startingFireDistance = fireDistance;
             startingExperience = currentExperience;
+            startingMaxHealth = maxHealth;
         }
 
         experienceToNextLevel = CalculateNextLevelExperience(currentLevel, experienceExponent);
-        hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power);
+        hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power, maxHealth);
         hud.UpdateHealthBar(currentHealth, maxHealth);
         hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
         GameManager.playerLoaded = true;
@@ -99,6 +103,7 @@ public class Bear : MonoBehaviour
         GameManager.playerShootDistance = fireDistance;
         GameManager.playerCurrentExperience = currentExperience;
         GameManager.playerRateOfFire = rateOfFire;
+        GameManager.playerMaxHealth = maxHealth;
     }
 
     private void FixedUpdate()
@@ -149,11 +154,12 @@ public class Bear : MonoBehaviour
             rateOfFire += rateOfFireGrowthRate;
             power += powerGrowthRate;
             fireDistance += fireDistanceGrowRate;
+            maxHealth++;
             var experienceToNextLevelNet = CalculateNextLevelExperience(currentLevel, experienceExponent);
             experienceToNextLevel = experienceToNextLevelNet - currentExperience;
             Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
             currentExperience = 0;
-            hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power);
+            hud.UpdateLevel(currentLevel, rateOfFire, fireDistance, power, maxHealth);
             hud.UpdateHealthBar(currentHealth, maxHealth);
         }
 
