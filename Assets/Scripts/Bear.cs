@@ -103,6 +103,7 @@ public class Bear : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(rb.velocity.magnitude);
         var finalRotation = Vector3.zero;
 
         finalRotation.x = -pitchYaw.y * pitchSpeed * Time.fixedDeltaTime;
@@ -116,7 +117,7 @@ public class Bear : MonoBehaviour
             if (rb.velocity.magnitude < maxSpeed)
             {
                 var sign = Mathf.Sign(input.y);
-                rb.AddForce(bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime);
+                rb.velocity += bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime;
             }
         }
 
@@ -125,14 +126,14 @@ public class Bear : MonoBehaviour
             if(rb.velocity.magnitude < maxSpeed)
             {
                 var sign = Mathf.Sign(input.x);
-                rb.AddForce(transform.right * sign * moveSpeed * Time.fixedDeltaTime);
+                rb.velocity += transform.right * sign * moveSpeed * Time.fixedDeltaTime;
             }
         }
 
         if(diveSurface != 0)
         {
             var sign = Mathf.Sign(diveSurface);
-            rb.AddForce(transform.up * sign * moveSpeed * Time.fixedDeltaTime);
+            rb.velocity += transform.up * sign * moveSpeed * Time.fixedDeltaTime;
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);

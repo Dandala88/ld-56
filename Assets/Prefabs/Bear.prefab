@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  moveSpeed: 1500
-  maxSpeed: 500
-  deceleration: 20
+  moveSpeed: 100
+  maxSpeed: 30
+  deceleration: 50
   pitchSpeed: 10
   yawSpeed: 10
   rollSpeed: 50

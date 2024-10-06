@@ -9407,6 +9407,11 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 63916385}
+    - target: {fileID: 5686103141517390024, guid: e19e8e25ee5a5eb4080c4b599e50d91a,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6581034477031671630, guid: e19e8e25ee5a5eb4080c4b599e50d91a,
         type: 3}
       propertyPath: m_LocalPosition.x
