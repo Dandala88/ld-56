@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossVirus : Enemy
 {
@@ -13,8 +14,6 @@ public class BossVirus : Enemy
 
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
-    private bool aggro;
-    private Bear bear;
     private List<EnemyLaser> laserPool = new List<EnemyLaser>();
     private int laserPoolIterator;
 
@@ -35,6 +34,7 @@ public class BossVirus : Enemy
     protected void Update()
     {
         base.Update();
+        healthbar.transform.position = transform.position + (Vector3.up * radius * transform.localScale.y * 2);
 
         if (aggro)
         {
@@ -93,26 +93,6 @@ public class BossVirus : Enemy
 
                 Debug.DrawRay(turret.transform.position, transform.forward, Color.yellow, 60);
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if(bear != null)
-        {
-            aggro = true;
-            this.bear = bear;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = false;
-            this.bear = null;
         }
     }
 

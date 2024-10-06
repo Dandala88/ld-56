@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Enemy : MonoBehaviour
     protected GFX gfx;
     public Collider hurtBox;
     protected AudioSource audioSource;
+    public Image healthbar;
+    private float maxHealth;
+    protected bool aggro;
+    protected Bear bear;
 
     protected void Awake()
     {
@@ -22,11 +27,16 @@ public class Enemy : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         gfx = GetComponentInChildren<GFX>();
         audioSource = GetComponent<AudioSource>();
+        maxHealth = health;
     }
 
     protected void Update()
     {
-        if(ps != null && !ps.IsAlive() && dying)
+        healthbar.transform.position = transform.position + (Vector3.up * 2);
+        if(bear != null )
+            healthbar.transform.forward = -(bear.transform.position - transform.position);
+        healthbar.fillAmount = health / maxHealth;
+        if (ps != null && !ps.IsAlive() && dying)
             Destroy(gameObject);
     }
 
@@ -57,5 +67,27 @@ public class Enemy : MonoBehaviour
         hurtBox.enabled = false;
         dying = true;
         ps.Play();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var bear = other.gameObject.GetComponentInParent<Bear>();
+        if (bear != null)
+        {
+            aggro = true;
+            this.bear = bear;
+            healthbar.enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var bear = other.gameObject.GetComponentInParent<Bear>();
+        if (bear != null)
+        {
+            aggro = false;
+            this.bear = null;
+            healthbar.enabled = false;
+        }
     }
 }

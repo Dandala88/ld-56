@@ -13,8 +13,6 @@ public class BossAmoeba : Enemy
 
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
-    private bool aggro;
-    private Bear bear;
     private List<EnemyLaser> laserPool = new List<EnemyLaser>();
     private int laserPoolIterator;
     private int shootBurstIndex;
@@ -76,26 +74,6 @@ public class BossAmoeba : Enemy
             else
                 clone.transform.forward = turret.transform.forward;
             clone.gameObject.SetActive(true);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = true;
-            this.bear = bear;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = false;
-            this.bear = null;
         }
     }
 

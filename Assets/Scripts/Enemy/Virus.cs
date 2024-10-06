@@ -9,12 +9,10 @@ public class Virus : Enemy
     public float deceleration;
     public float moveForce;
     public EnemyLaser laserPrefab;
-    public bool aggro;
 
     private float moveElapsed;
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
-    private Bear bear;
 
     protected void Awake()
     {
@@ -29,7 +27,7 @@ public class Virus : Enemy
         Move();
     }
 
-    private void Update()
+    protected void Update()
     {
         base.Update();
         moveElapsed += Time.deltaTime;
@@ -71,26 +69,6 @@ public class Virus : Enemy
             var clone = Instantiate(laserPrefab);
             clone.transform.position = turret.transform.position;
             clone.transform.forward = turret.transform.forward;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = true;
-            this.bear = bear;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        var bear = other.gameObject.GetComponentInParent<Bear>();
-        if (bear != null)
-        {
-            aggro = false;
-            this.bear = null;
         }
     }
 }
