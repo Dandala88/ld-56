@@ -6,9 +6,7 @@ public class BossAmoeba : Enemy
 {
     public float shootInterval = 1f;
     public int shootBurstVolume = 20;
-    public float radius = 30f;
     public float deceleration;
-    public float rotationSpeed;
     public EnemyLaser laserPrefab;
 
     private float shootElapsed;
@@ -34,6 +32,7 @@ public class BossAmoeba : Enemy
     protected void Update()
     {
         base.Update();
+        healthbar.transform.position = transform.position + (Vector3.up * transform.localScale.y * 2);
 
         if (aggro)
         {
@@ -47,7 +46,6 @@ public class BossAmoeba : Enemy
         }
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
-        transform.Rotate(rotationSpeed * Time.fixedDeltaTime, rotationSpeed * Time.fixedDeltaTime, rotationSpeed * Time.fixedDeltaTime);
     }
 
     private IEnumerator ShootBurstCoroutine()

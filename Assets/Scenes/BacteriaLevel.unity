@@ -174,6 +174,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+--- !u!1 &103520759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103520761}
+  - component: {fileID: 103520760}
+  m_Layer: 0
+  m_Name: BossWaypoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &103520760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103520759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb44ae3d4a073344966d45b1ee71392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &103520761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103520759}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 309, y: 0, z: 305}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214594899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1245,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+--- !u!1 &667678106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667678108}
+  - component: {fileID: 667678107}
+  m_Layer: 0
+  m_Name: BossWaypoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &667678107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667678106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb44ae3d4a073344966d45b1ee71392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &667678108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667678106}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 170, y: 0, z: -5}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683336885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1393,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &727447201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727447202}
+  - component: {fileID: 727447203}
+  m_Layer: 0
+  m_Name: BossWaypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &727447202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727447201}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 154.54, y: 0, z: 530.5}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727447203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727447201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb44ae3d4a073344966d45b1ee71392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &749881862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1656,50 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &960612871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 960612873}
+  - component: {fileID: 960612872}
+  m_Layer: 0
+  m_Name: BossWaypoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &960612872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960612871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb44ae3d4a073344966d45b1ee71392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &960612873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960612871}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -188, y: 0, z: -31}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1913,7 +2089,7 @@ Transform:
   m_GameObject: {fileID: 1090047047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.9}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2243,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bosslist:
-  - {fileID: 3575479866997971007}
+  - {fileID: 7878849846428548951}
 --- !u!4 &1171605093
 Transform:
   m_ObjectHideFlags: 0
@@ -2757,6 +2933,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 650344056395515109}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1523805130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8397465850027292921, guid: d023a662d1de33844bfec66179cf451b,
+    type: 3}
+  m_PrefabInstance: {fileID: 650344056395515109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1583882680 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5298974845721243520, guid: 87a9bf1f79bc78c4391bb4ac74128e48,
@@ -2825,7 +3013,7 @@ Transform:
   m_GameObject: {fileID: 1607145775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 229.4}
+  m_LocalPosition: {x: 0, y: 0, z: 328.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3203,6 +3391,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1988493701}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1732825389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732825391}
+  - component: {fileID: 1732825390}
+  m_Layer: 0
+  m_Name: BossWaypoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1732825390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732825389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb44ae3d4a073344966d45b1ee71392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1732825391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732825389}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -188, y: 0, z: 526}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1849416968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,6 +3568,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849416968}
   m_CullTransparentMesh: 1
+--- !u!1 &1852750822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1852750824}
+  - component: {fileID: 1852750823}
+  m_Layer: 0
+  m_Name: BossWaypoint (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1852750823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852750822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb44ae3d4a073344966d45b1ee71392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1852750824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852750822}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -350, y: 0, z: 263}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856588981
 GameObject:
   m_ObjectHideFlags: 0
@@ -4543,7 +4819,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f5ac8edd3dd6a4147a2804388e5a91ae, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 00bd3c199ed75b24e9ad977de0f6569e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4753,30 +5029,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7025278644247920329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3575479866997971007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7878849846428548950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697ec9615bf8dc444be9f602bf10050d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 25
-  experience: 10
-  collisionDamage: 5
-  dying: 0
-  hurtBox: {fileID: 816844911572512316}
-  healthbar: {fileID: 0}
-  moveInterval: 3
-  shootInterval: 2
-  deceleration: 10
-  moveForce: 1500
-  laserPrefab: {fileID: 4978446856740366901, guid: 0530d9df8f95aaa4dbd54ad29858c5bd,
-    type: 3}
 --- !u!137 &3732425517473699810
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10186,7 +10438,7 @@ GameObject:
   - component: {fileID: 3880794702479727799}
   - component: {fileID: 7550052612783280510}
   - component: {fileID: 6361772790696638290}
-  - component: {fileID: 3575479866997971007}
+  - component: {fileID: 7878849846428548951}
   - component: {fileID: 1875778333117826413}
   m_Layer: 6
   m_Name: BacteriaBoss
@@ -10195,6 +10447,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7878849846428548951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878849846428548950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4b8e6204c1a9346baf3a1d4c9be85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 500
+  experience: 100
+  collisionDamage: 15
+  dying: 0
+  hurtBox: {fileID: 816844911572512316}
+  healthbar: {fileID: 1523805130}
+  shootInterval: 3
+  shootBurstVolume: 10
+  moveSpeed: 100
+  deceleration: 10
+  laserPrefab: {fileID: 4978446856740366901, guid: 272af1fc5cc041f42b437f749d71dc9d,
+    type: 3}
+  wayPoints:
+  - {fileID: 727447203}
+  - {fileID: 103520760}
+  - {fileID: 667678107}
+  - {fileID: 960612872}
+  - {fileID: 1852750823}
+  - {fileID: 1732825390}
 --- !u!1 &8681180517471699489
 GameObject:
   m_ObjectHideFlags: 0
@@ -10291,4 +10574,10 @@ SceneRoots:
   - {fileID: 1607145777}
   - {fileID: 1221936735}
   - {fileID: 1988493701}
+  - {fileID: 727447202}
+  - {fileID: 103520761}
+  - {fileID: 667678108}
+  - {fileID: 960612873}
+  - {fileID: 1852750824}
+  - {fileID: 1732825391}
   - {fileID: 7153950489474999567}
