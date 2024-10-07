@@ -10625,9 +10625,16 @@ MonoBehaviour:
   healthbar: {fileID: 1523805130}
   shootInterval: 4
   shootBurstVolume: 20
+  moveSpeed: 50
   deceleration: 0
   laserPrefab: {fileID: 4978446856740366901, guid: 26b68b55baffbc24785d5c9e54ee9d95,
     type: 3}
+  wayPoints:
+  - {fileID: 1953286222}
+  - {fileID: 2071040230}
+  - {fileID: 385834869}
+  - {fileID: 2089967215}
+  - {fileID: 1501224197}
 --- !u!1 &7861583434100511446
 GameObject:
   m_ObjectHideFlags: 0
