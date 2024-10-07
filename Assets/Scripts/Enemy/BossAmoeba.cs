@@ -50,7 +50,7 @@ public class BossAmoeba : Enemy
 
         if (Vector3.Distance(rb.position, wayPoints[nextWaypointIndex].transform.position) > 1f)
         {
-            rb.position = Vector3.MoveTowards(rb.position, wayPoints[nextWaypointIndex].transform.position, moveSpeed * Time.fixedDeltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, wayPoints[nextWaypointIndex].transform.position, moveSpeed * Time.deltaTime);
         }
         else
         {
