@@ -10523,7 +10523,7 @@ MonoBehaviour:
   healthbar: {fileID: 1523805130}
   shootInterval: 3
   shootBurstVolume: 10
-  moveSpeed: 75
+  moveSpeed: 50
   deceleration: 10
   laserPrefab: {fileID: 4978446856740366901, guid: 272af1fc5cc041f42b437f749d71dc9d,
     type: 3}

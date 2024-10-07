@@ -50,7 +50,7 @@ public class BossBacteria : Enemy
 
         if (Vector3.Distance(rb.position, wayPoints[nextWaypointIndex].transform.position) > 1f)
         {
-            rb.position = Vector3.MoveTowards(rb.position, wayPoints[nextWaypointIndex].transform.position, moveSpeed * Time.fixedDeltaTime);
+            rb.position = Vector3.MoveTowards(rb.position, wayPoints[nextWaypointIndex].transform.position, moveSpeed * Time.deltaTime);
             var direction = wayPoints[nextWaypointIndex].transform.position - rb.position;
             transform.forward = -direction;
         }
