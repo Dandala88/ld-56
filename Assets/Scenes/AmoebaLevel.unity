@@ -1393,6 +1393,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &740916743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740916745}
+  - component: {fileID: 740916744}
+  m_Layer: 0
+  m_Name: EnemySpawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &740916744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740916743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e8a4bebe4a08b4c945cae2d7a48eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 200
+  volume: 250
+  enemies:
+  - prefab: {fileID: 8252582805285364482, guid: 69d14f98101b4614e8867fb80cfd6eb0,
+      type: 3}
+    rarity: 0.266
+  - prefab: {fileID: 7902471713307100750, guid: c6ff7ff30c40c894ca634f8d6541f9fe,
+      type: 3}
+    rarity: 0.773
+  enemyCanvas: {fileID: 1221936734}
+  enemyHealthbarPrefab: {fileID: 8889035473082681655, guid: 9bd898d1c42dc9d468d3234ef7e1f8c6,
+    type: 3}
+--- !u!4 &740916745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740916743}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 200, y: 0, z: 288}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &749881862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,7 +2237,7 @@ Transform:
   m_GameObject: {fileID: 1090047047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.9}
+  m_LocalPosition: {x: 0, y: 0, z: 145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2199,8 +2255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e8a4bebe4a08b4c945cae2d7a48eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 100
-  volume: 250
+  radius: 200
+  volume: 50
   enemies:
   - prefab: {fileID: 7846678111247754675, guid: a4330c308d854454c82262f6621a83f0,
       type: 3}
@@ -3066,7 +3122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e8a4bebe4a08b4c945cae2d7a48eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 100
+  radius: 200
   volume: 250
   enemies:
   - prefab: {fileID: 8252582805285364482, guid: 69d14f98101b4614e8867fb80cfd6eb0,
@@ -3087,7 +3143,7 @@ Transform:
   m_GameObject: {fileID: 1607145775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 229.4}
+  m_LocalPosition: {x: -200, y: 0, z: 288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10313,9 +10369,7 @@ MonoBehaviour:
   healthbar: {fileID: 1523805130}
   shootInterval: 4
   shootBurstVolume: 20
-  radius: 30
   deceleration: 0
-  rotationSpeed: 0
   laserPrefab: {fileID: 4978446856740366901, guid: 26b68b55baffbc24785d5c9e54ee9d95,
     type: 3}
 --- !u!1 &7861583434100511446
@@ -10544,6 +10598,7 @@ SceneRoots:
   - {fileID: 749881865}
   - {fileID: 1090047049}
   - {fileID: 1607145777}
+  - {fileID: 740916745}
   - {fileID: 7402555291495152458}
   - {fileID: 1221936735}
   - {fileID: 1988493701}
