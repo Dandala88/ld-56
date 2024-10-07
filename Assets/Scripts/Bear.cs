@@ -50,6 +50,7 @@ public class Bear : MonoBehaviour
     private int startingLevel;
     private float startingFireDistance;
     private float startingMaxHealth;
+    private bool dead;
 
     private void Awake()
     {
@@ -94,6 +95,12 @@ public class Bear : MonoBehaviour
         hud.UpdateHealthBar(currentHealth, maxHealth);
         hud.UpdateExperienceBar(currentExperience, experienceToNextLevel);
         GameManager.playerLoaded = true;
+    }
+
+    [ContextMenu("GainLevel")]
+    public void GainLevel()
+    {
+        GainExperience(1000);
     }
 
     private void Update()
@@ -187,6 +194,7 @@ public class Bear : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
+        dead = true;
         animator.SetBool("Dead", true);
         yield return new WaitForSeconds(3);
         GameManager.playerLevel = startingLevel;
@@ -205,7 +213,7 @@ public class Bear : MonoBehaviour
     private bool shooting;
     public void Shoot(InputAction.CallbackContext context)
     {
-        if(context.started && !inShootCooldown)
+        if(context.started && !inShootCooldown && !dead)
         {
             shooting = true;
             var clone = Instantiate(laserPrefab);
@@ -230,7 +238,7 @@ public class Bear : MonoBehaviour
         inShootCooldown = true;
         yield return new WaitForSeconds(seconds);
         inShootCooldown = false;
-        if (shooting)
+        if (shooting && !dead)
         {
             var clone = Instantiate(laserPrefab);
             clone.transform.position = laserOrigin.position;

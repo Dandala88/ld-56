@@ -6,14 +6,17 @@ public class BossAmoeba : Enemy
 {
     public float shootInterval = 1f;
     public int shootBurstVolume = 20;
+    public float moveSpeed = 50f;
     public float deceleration;
     public EnemyLaser laserPrefab;
+    public List<BossWayPoint> wayPoints = new List<BossWayPoint>();
 
     private float shootElapsed;
     private List<Turret> turrets = new List<Turret>();
     private List<EnemyLaser> laserPool = new List<EnemyLaser>();
     private int laserPoolIterator;
     private int shootBurstIndex;
+    private int nextWaypointIndex;
 
     protected void Awake()
     {
@@ -32,7 +35,7 @@ public class BossAmoeba : Enemy
     protected void Update()
     {
         base.Update();
-        healthbar.transform.position = transform.position + (Vector3.up * transform.localScale.y * 2);
+        healthbar.transform.position = transform.position + (Vector3.up * transform.localScale.y * 3);
 
         if (aggro)
         {
@@ -45,7 +48,16 @@ public class BossAmoeba : Enemy
             }
         }
 
-        rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
+        if (Vector3.Distance(rb.position, wayPoints[nextWaypointIndex].transform.position) > 1f)
+        {
+            rb.position = Vector3.MoveTowards(rb.position, wayPoints[nextWaypointIndex].transform.position, moveSpeed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            nextWaypointIndex++;
+            if (nextWaypointIndex >= wayPoints.Count)
+                nextWaypointIndex = 0;
+        }
     }
 
     private IEnumerator ShootBurstCoroutine()
