@@ -125,20 +125,14 @@ public class Bear : MonoBehaviour
 
         if (Mathf.Abs(input.y) > 0.1f)
         {
-            if (rb.velocity.magnitude < maxSpeed)
-            {
-                var sign = Mathf.Sign(input.y);
-                rb.velocity += bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime;
-            }
+            var sign = Mathf.Sign(input.y);
+            rb.velocity += bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime;
         }
 
         if (Mathf.Abs(input.x) > 0.1f)
         {
-            if(rb.velocity.magnitude < maxSpeed)
-            {
-                var sign = Mathf.Sign(input.x);
-                rb.velocity += transform.right * sign * moveSpeed * Time.fixedDeltaTime;
-            }
+            var sign = Mathf.Sign(input.x);
+            rb.velocity += transform.right * sign * moveSpeed * Time.fixedDeltaTime;
         }
 
         if(diveSurface != 0)
@@ -146,6 +140,8 @@ public class Bear : MonoBehaviour
             var sign = Mathf.Sign(diveSurface);
             rb.velocity += transform.up * sign * moveSpeed * Time.fixedDeltaTime;
         }
+
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
     }
