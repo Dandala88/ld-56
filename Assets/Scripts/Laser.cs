@@ -33,13 +33,17 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.isTrigger)
+        {
+            Destroy(gameObject);
+        }
+
         var enemy = other.GetComponentInParent<Enemy>();
         if (enemy != null && !other.isTrigger)
         {
             var enemyDead = enemy.Hurt(power);
             if(enemyDead)
                 bear.GainExperience(enemy.experience);
-            Destroy(gameObject);
         }
     }  
 }

@@ -49,6 +49,11 @@ public class EnemyLaser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.isTrigger)
+        {
+            Destroy(gameObject);
+        }
+
         var bear = other.GetComponentInParent<Bear>();
         if (bear != null)
         {
