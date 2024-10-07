@@ -153,11 +153,11 @@ public class Bear : MonoBehaviour
         if(currentExperience >= experienceToNextLevel)
         {
             currentLevel++;
+            maxHealth++;
             currentHealth = maxHealth;
             rateOfFire += rateOfFireGrowthRate;
             power += powerGrowthRate;
             fireDistance += fireDistanceGrowRate;
-            maxHealth++;
             var experienceToNextLevelNet = CalculateNextLevelExperience(currentLevel, experienceExponent);
             experienceToNextLevel = experienceToNextLevelNet - currentExperience;
             Debug.Log($"Next Net: {experienceToNextLevelNet} Next adj: { experienceToNextLevel }");
