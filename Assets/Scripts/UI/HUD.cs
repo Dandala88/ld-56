@@ -20,6 +20,7 @@ public class HUD : MonoBehaviour
     {
         this.currentHealth = currentHealth;
         healthBar.fillAmount = currentHealth / maxHealth;
+        if(currentHealth < 0 ) currentHealth = 0;
         health.text = $"{currentHealth}/{maxHealth}";
     }
 

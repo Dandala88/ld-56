@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAmoeba : Enemy
+public class BossBacteria : Enemy
 {
     public float shootInterval = 1f;
     public int shootBurstVolume = 20;
-    public float moveSpeed = 50f;
+    public float moveSpeed;
     public float deceleration;
     public EnemyLaser laserPrefab;
     public List<BossWayPoint> wayPoints = new List<BossWayPoint>();
@@ -35,7 +35,7 @@ public class BossAmoeba : Enemy
     protected void Update()
     {
         base.Update();
-        healthbar.transform.position = transform.position + (Vector3.up * transform.localScale.y * 3);
+        healthbar.transform.position = transform.position + (Vector3.up * transform.localScale.y * 2);
 
         if (aggro)
         {
@@ -51,13 +51,15 @@ public class BossAmoeba : Enemy
         if (Vector3.Distance(rb.position, wayPoints[nextWaypointIndex].transform.position) > 1f)
         {
             rb.position = Vector3.MoveTowards(rb.position, wayPoints[nextWaypointIndex].transform.position, moveSpeed * Time.fixedDeltaTime);
+            var direction = wayPoints[nextWaypointIndex].transform.position - rb.position;
+            transform.forward = -direction;
         }
         else
         {
             nextWaypointIndex++;
             if (nextWaypointIndex >= wayPoints.Count)
                 nextWaypointIndex = 0;
-        }
+        }    
     }
 
     private IEnumerator ShootBurstCoroutine()
@@ -65,7 +67,7 @@ public class BossAmoeba : Enemy
         yield return new WaitForSeconds(0.1f);
         Shoot();
         shootBurstIndex++;
-        if(shootBurstIndex < shootBurstVolume)
+        if (shootBurstIndex < shootBurstVolume)
             StartCoroutine(ShootBurstCoroutine());
         else
             shootBurstIndex = 0;

@@ -50,6 +50,7 @@ public class Bear : MonoBehaviour
     private int startingLevel;
     private float startingFireDistance;
     private float startingMaxHealth;
+    private bool dead;
 
     private void Awake()
     {
@@ -96,6 +97,12 @@ public class Bear : MonoBehaviour
         GameManager.playerLoaded = true;
     }
 
+    [ContextMenu("GainLevel")]
+    public void GainLevel()
+    {
+        GainExperience(1000);
+    }
+
     private void Update()
     {
         GameManager.playerLevel = currentLevel;
@@ -118,20 +125,14 @@ public class Bear : MonoBehaviour
 
         if (Mathf.Abs(input.y) > 0.1f)
         {
-            if (rb.velocity.magnitude < maxSpeed)
-            {
-                var sign = Mathf.Sign(input.y);
-                rb.velocity += bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime;
-            }
+            var sign = Mathf.Sign(input.y);
+            rb.velocity += bearRoot.transform.forward * sign * moveSpeed * Time.fixedDeltaTime;
         }
 
         if (Mathf.Abs(input.x) > 0.1f)
         {
-            if(rb.velocity.magnitude < maxSpeed)
-            {
-                var sign = Mathf.Sign(input.x);
-                rb.velocity += transform.right * sign * moveSpeed * Time.fixedDeltaTime;
-            }
+            var sign = Mathf.Sign(input.x);
+            rb.velocity += transform.right * sign * moveSpeed * Time.fixedDeltaTime;
         }
 
         if(diveSurface != 0)
@@ -139,6 +140,8 @@ public class Bear : MonoBehaviour
             var sign = Mathf.Sign(diveSurface);
             rb.velocity += transform.up * sign * moveSpeed * Time.fixedDeltaTime;
         }
+
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
         rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
     }
@@ -187,6 +190,7 @@ public class Bear : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
+        dead = true;
         animator.SetBool("Dead", true);
         yield return new WaitForSeconds(3);
         GameManager.playerLevel = startingLevel;
@@ -205,7 +209,7 @@ public class Bear : MonoBehaviour
     private bool shooting;
     public void Shoot(InputAction.CallbackContext context)
     {
-        if(context.started && !inShootCooldown)
+        if(context.started && !inShootCooldown && !dead)
         {
             shooting = true;
             var clone = Instantiate(laserPrefab);
@@ -230,7 +234,7 @@ public class Bear : MonoBehaviour
         inShootCooldown = true;
         yield return new WaitForSeconds(seconds);
         inShootCooldown = false;
-        if (shooting)
+        if (shooting && !dead)
         {
             var clone = Instantiate(laserPrefab);
             clone.transform.position = laserOrigin.position;

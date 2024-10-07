@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/AmoebaLevel.unity
     guid: 520ff9cc6752b264ca225c2e651f544c
   - enabled: 1
+    path: Assets/Scenes/BacteriaLevel.unity
+    guid: 75f3b9c2750292f408041dbd97a84afa
+  - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 109f29b470010dc40aed6210dee6af7c
   m_configObjects: {}
